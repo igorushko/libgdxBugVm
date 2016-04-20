@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath "com.bugvm:bugvm-gradle-plugin:1.0.6"
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    version = '1.0'
+    ext {
+        appName = "libgdxBugVm"
+        gdxVersion = '1.7.1'
+        bugVMVersion = "1.0.6"
+        box2DLightsVersion = '1.4'
+        ashleyVersion = '1.7.0'
+        aiVersion = '1.8.0'
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":ios") {
+    apply plugin: "java"
+    apply plugin: "bugvm"
+
+
+    dependencies {
+        compile project(":core")
+        compile "com.bugvm:bugvm-rt:$bugVMVersion"
+        compile "com.bugvm:bugvm-cocoatouch:$bugVMVersion"
+        compile "com.bugvm:bugvm-libgdx:$bugVMVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}

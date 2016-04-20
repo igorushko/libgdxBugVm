@@ -1,10 +1,10 @@
 package com.mygdx.game;
 
-import org.robovm.apple.foundation.NSAutoreleasePool;
-import org.robovm.apple.uikit.UIApplication;
+import com.bugvm.apple.foundation.NSAutoreleasePool;
+import com.bugvm.apple.uikit.UIApplication;
 
-import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
-import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+import com.badlogic.gdx.backends.iosbugvm.IOSApplication;
+import com.badlogic.gdx.backends.iosbugvm.IOSApplicationConfiguration;
 import com.mygdx.game.LibgdxBugVmGame;
 
 public class IOSLauncher extends IOSApplication.Delegate {
